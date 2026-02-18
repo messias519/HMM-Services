@@ -92,19 +92,35 @@ export const generateAIHPDF = async (data: AIHData): Promise<Uint8Array> => {
             }
         } else {
             // Standard Text
-            firstPage.drawText(String(value), {
-                x: x + 2,
-                y: y, // Adjust for baseline if needed
-                size: fontSize,
-                font: helveticaFont,
-                color: rgb(0, 0, 0),
-            });
+            // Use drawTextFit to ensure it fits within the box
+            const maxWidth = field.width || 200; // Default fallback
+            drawTextFit(firstPage, String(value), x + 2, y, maxWidth - 4, fontSize, helveticaFont);
         }
     });
 
     // 5. Serialize
     const pdfBytes = await pdfDoc.save();
     return pdfBytes;
+};
+
+// Helper to fit text within width by scaling down size if needed
+const drawTextFit = (page: any, text: string, x: number, y: number, maxWidth: number, initialSize: number, font: any) => {
+    let size = initialSize;
+    let textWidth = font.widthOfTextAtSize(text, size);
+
+    // Reduce size until it fits or hits minimum
+    while (textWidth > maxWidth && size > 5) {
+        size -= 0.5;
+        textWidth = font.widthOfTextAtSize(text, size);
+    }
+
+    page.drawText(text, {
+        x,
+        y,
+        size,
+        font,
+        color: rgb(0, 0, 0),
+    });
 };
 
 export const viewPDF = (pdfBytes: Uint8Array) => {

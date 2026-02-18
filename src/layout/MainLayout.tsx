@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink, Outlet } from 'react-router-dom';
-import { FileText, Menu, X, LogOut } from 'lucide-react';
+import { FileText, Menu, X, LogOut, Tag } from 'lucide-react';
 import clsx from 'clsx';
 
 const Sidebar = ({ isOpen, toggle }: { isOpen: boolean; toggle: () => void }) => {
@@ -31,7 +31,20 @@ const Sidebar = ({ isOpen, toggle }: { isOpen: boolean; toggle: () => void }) =>
 
             <nav className="p-4 space-y-2 mt-4">
                 <NavLink
-                    to="/"
+                    to="/etiquetas"
+                    className={({ isActive }) =>
+                        clsx(
+                            "flex items-center space-x-3 px-4 py-3 rounded-xl transition-all duration-200",
+                            isActive ? "bg-white/10 text-white shadow-lg ring-1 ring-white/20" : "text-blue-100/60 hover:bg-white/5 hover:text-white"
+                        )
+                    }
+                >
+                    <Tag className="w-5 h-5 text-blue-300" />
+                    <span className="font-medium">Gerador de Etiquetas</span>
+                </NavLink>
+
+                <NavLink
+                    to="/aih"
                     className={({ isActive }) =>
                         clsx(
                             "flex items-center space-x-3 px-4 py-3 rounded-xl transition-all duration-200",
@@ -49,7 +62,7 @@ const Sidebar = ({ isOpen, toggle }: { isOpen: boolean; toggle: () => void }) =>
                     &copy; 2026 Hospital Municipal de Mozarlândia
                 </p>
             </div>
-        </aside>
+        </aside >
     );
 };
 

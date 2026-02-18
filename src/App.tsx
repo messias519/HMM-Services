@@ -1,7 +1,9 @@
 import { useState, useEffect } from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { MainLayout } from './layout/MainLayout';
+import { Home } from './pages/Home';
 import { AIHGenerator } from './pages/AIHGenerator';
+import { LabelGenerator } from './pages/LabelGenerator';
 import { Login } from './pages/Login';
 
 function App() {
@@ -27,7 +29,9 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<MainLayout onLogout={handleLogout} />}>
-          <Route index element={<AIHGenerator />} />
+          <Route index element={<Home />} />
+          <Route path="aih" element={<AIHGenerator />} />
+          <Route path="etiquetas" element={<LabelGenerator />} />
         </Route>
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>

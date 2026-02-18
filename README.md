@@ -5,7 +5,9 @@ Este projeto é uma ferramenta web especializada na geração de laudos de **Aut
 ## 🚀 Funcionalidades Principais
 
 - **Segurança**: Camada de acesso protegida por senha mestre (`saude2026`).
-- **Gerador de AIH**: Formulário inteligente com busca dinâmica de CIDs e Procedimentos baseada no banco de dados SIGTAP local.
+- **Gerador de AIH**: Formulário digital para preenchimento de solicitação de internação, com busca de CIDs e procedimentos, e geração automática de PDF no padrão do laudo oficial.
+- **Gerador de Etiquetas**: Ferramenta para criar etiquetas de Paciente, Acompanhante e Visitante (100x50mm) compatíveis com impressoras Zebra ZD220.
+- **Autenticação**: Sistema simples de login protegido por senha "master".
 - **Cálculos Automatizados**: Exibição instantânea de valores de SH (Serviço Hospitalar), SP (Serviço Profissional) e SA (Serviço Ambulatorial) após seleção do procedimento.
 - **Motor de PDF**: Geração de PDF em tempo real no lado do cliente (client-side), injetando os dados diretamente nas coordenadas corretas de um template oficial.
 - **UX/UI Customizada**: Interface em tons de Azul, alinhada à identidade visual da Prefeitura de Mozarlândia e otimizada para produtividade.
