@@ -136,7 +136,7 @@ export const generateLabelPDF = async (data: LabelData): Promise<Uint8Array> => 
         drawCenteredText(page, infoText, infoY, 10, font, centerX);
 
         // Footer Row (Admission)
-        drawFullWidthFooter(page, `INTERNAÇÃO: ${data.admissionDate}`, 10, width, height, font);
+        drawFullWidthFooter(page, `INTERNAÇÃO: ${data.admissionDate}`, 10, width, font);
 
     } else if (data.type === 'ACOMPANHANTE') {
         drawCenteredText(page, 'ACOMPANHANTE', contentTopY, 14, fontBold, centerX);
@@ -150,7 +150,7 @@ export const generateLabelPDF = async (data: LabelData): Promise<Uint8Array> => 
         drawTextFitCentered(page, `PACIENTE: ${(data.patientName || '').toUpperCase()}`, relY, contentWidth, 9, font, centerX);
 
         // Footer
-        drawFullWidthFooter(page, `DATA: ${data.admissionDate}`, 10, width, height, font);
+        drawFullWidthFooter(page, `DATA: ${data.admissionDate}`, 10, width, font);
 
     } else if (data.type === 'VISITANTE') {
         drawCenteredText(page, 'VISITANTE', contentTopY, 14, fontBold, centerX);
@@ -164,7 +164,7 @@ export const generateLabelPDF = async (data: LabelData): Promise<Uint8Array> => 
         drawTextFitCentered(page, `VISITANDO: ${(data.patientName || '').toUpperCase()}`, relY, contentWidth, 9, font, centerX);
 
         // Footer
-        drawFullWidthFooter(page, `DATA: ${data.admissionDate}`, 10, width, height, font);
+        drawFullWidthFooter(page, `DATA: ${data.admissionDate}`, 10, width, font);
     }
 
     return await pdfDoc.save();
@@ -185,7 +185,7 @@ const drawTextFitCentered = (page: PDFPage, text: string, y: number, maxWidth: n
     page.drawText(text, { x: centerX - (textWidth / 2), y, size, font, color: rgb(0, 0, 0) });
 };
 
-const drawFullWidthFooter = (page: PDFPage, text: string, margin: number, pageWidth: number, pageHeight: number, font: PDFFont) => {
+const drawFullWidthFooter = (page: PDFPage, text: string, margin: number, pageWidth: number, font: PDFFont) => {
     // Draw a black bar at bottom? Or just bottom text with line.
     // Let's do a top line for footer.
     const footerY = 15;
